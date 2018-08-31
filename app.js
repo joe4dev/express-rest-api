@@ -1,5 +1,9 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var app = express();
+
+// Parse requests of content-type 'application/json'
+app.use(bodyParser.json());
 
 app.get('/', function(req, res) {
     res.send('Hello World!');
