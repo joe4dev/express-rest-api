@@ -58,6 +58,14 @@ app.patch('/camels/:id', function(req, res) {
     res.json(updated_camel);
 });
 
+// Delete the camel with the given ID
+app.delete('/camels/:id', function(req, res) {
+    var id = req.params.id;
+    var camel = camels[id];
+    delete camels[id];
+    res.json(camel);
+});
+
 app.listen(3000, function() {
     console.log('Example app listening on port 3000!');
 });
