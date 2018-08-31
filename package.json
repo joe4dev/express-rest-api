@@ -12,5 +12,8 @@
   },
   "author": "Joel Scheuner (joel.scheuner.dev@gmail.com)",
   "license": "MIT",
-  "homepage": "https://github.com/joe4dev/express-rest-api"
+  "homepage": "https://github.com/joe4dev/express-rest-api",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
