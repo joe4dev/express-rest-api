@@ -44,6 +44,128 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "http://localhost:3000/camels",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0f27a2cd-0105-4479-b0ea-d90c61f58cd2",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"camel_id\", jsonData._id);",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"color\":\"orange\", \"position\":7}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/camels",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"camels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/camels",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "df3caa20-9010-41fb-8a5d-95cf3420e909",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"color\":\"green\", \"position\":8}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/camels",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"camels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/camels",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "395cec8f-d2f5-4472-b9f8-fac9eb973876",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"color\":\"red\", \"position\":9}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/camels",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"camels"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
