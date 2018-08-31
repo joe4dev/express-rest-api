@@ -1,0 +1,16 @@
+{
+  "name": "express-rest-api",
+  "version": "0.1.0",
+  "description": "Basic RESTful API Example",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joe4dev/express-rest-api.git"
+  },
+  "author": "Joel Scheuner (joel.scheuner.dev@gmail.com)",
+  "license": "MIT",
+  "homepage": "https://github.com/joe4dev/express-rest-api"
+}
