@@ -247,6 +247,47 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "http://localhost:3000/camels/{{camel_id}}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "395cec8f-d2f5-4472-b9f8-fac9eb973876",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"color\":\"red\", \"position\":10}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/camels/{{camel_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"camels",
+						"{{camel_id}}"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
