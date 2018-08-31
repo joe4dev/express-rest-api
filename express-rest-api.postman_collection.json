@@ -166,6 +166,46 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "http://localhost:3000/camels",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "395cec8f-d2f5-4472-b9f8-fac9eb973876",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/camels",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"camels"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

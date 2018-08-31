@@ -23,6 +23,11 @@ app.post('/camels', function(req, res) {
     res.status(201).json(new_camel);
 });
 
+// Return a list of all camels
+app.get('/camels', function(req, res) {
+    res.json({"data": camels});
+});
+
 app.listen(3000, function() {
     console.log('Example app listening on port 3000!');
 });
