@@ -13,3 +13,9 @@ npm install
 ```bash
 npm start
 ```
+
+## Run the Postman Tests
+
+```bash
+npm test
+```

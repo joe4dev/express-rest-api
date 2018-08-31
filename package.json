@@ -4,7 +4,8 @@
   "description": "Basic RESTful API Example",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "newman run ./express-rest-api.postman_collection.json"
   },
   "repository": {
     "type": "git",
@@ -14,6 +15,10 @@
   "license": "MIT",
   "homepage": "https://github.com/joe4dev/express-rest-api",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "newman": "^4.5.0"
   }
 }
