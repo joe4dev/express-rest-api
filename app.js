@@ -28,6 +28,11 @@ app.get('/camels', function(req, res) {
     res.json({"camels": camels});
 });
 
+// Return the camel with the given ID
+app.get('/camels/:id', function(req, res) {
+    res.json(camels[req.params.id]);
+});
+
 app.listen(3000, function() {
     console.log('Example app listening on port 3000!');
 });
