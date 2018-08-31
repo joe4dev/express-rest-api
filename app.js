@@ -1,6 +1,10 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 var app = express();
+var Schema = mongoose.Schema;
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost:27017/animals', { useNewUrlParser: true });
 
 // Parse requests of content-type 'application/json'
 app.use(bodyParser.json());
@@ -11,6 +15,14 @@ app.get('/', function(req, res) {
 
 // Camels storage array
 var camels = [];
+
+// Mongoose schema
+var camelSchema = new Schema({
+    color: { type: String },
+    position: { type: Number }
+});
+// Mongoose model
+var Camel = mongoose.model('camels', camelSchema);
 
 // Create a new camel
 app.post('/camels', function(req, res) {
@@ -56,6 +68,14 @@ app.patch('/camels/:id', function(req, res) {
     };
     camels[id] = updated_camel;
     res.json(updated_camel);
+});
+
+// Delete the camel with the given ID
+app.delete('/camels/:id', function(req, res) {
+    var id = req.params.id;
+    var camel = camels[id];
+    delete camels[id];
+    res.json(camel);
 });
 
 app.listen(3000, function() {

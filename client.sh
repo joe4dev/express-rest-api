@@ -21,3 +21,6 @@ curl -w "\nstatus=%{http_code}\n" -H "Content-Type: application/json" -X PUT -d 
 
 echo "Partially update the camel with ID"
 curl -w "\nstatus=%{http_code}\n" -H "Content-Type: application/json" -X PATCH -d '{"position":11}' http://localhost:3000/camels/$ID
+
+echo "Delete the camel with ID"
+curl -w "\nstatus=%{http_code}\n" -H "Content-Type: application/json" -X DELETE http://localhost:3000/camels/$ID
