@@ -12,3 +12,6 @@ curl -w "\nstatus=%{http_code}\n" -H "Content-Type: application/json" -X POST -d
 
 echo "Return a list of all camels"
 curl -w "\nstatus=%{http_code}\n" -H "Content-Type: application/json" -X GET http://localhost:3000/camels
+
+echo "Return the camel with ID"
+curl -w "\nstatus=%{http_code}\n" -H "Content-Type: application/json" -X GET http://localhost:3000/camels/$ID
