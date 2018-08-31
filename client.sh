@@ -18,3 +18,6 @@ curl -w "\nstatus=%{http_code}\n" -H "Content-Type: application/json" -X GET htt
 
 echo "Update the camel with ID"
 curl -w "\nstatus=%{http_code}\n" -H "Content-Type: application/json" -X PUT -d '{"color":"red", "position":10}' http://localhost:3000/camels/$ID
+
+echo "Partially update the camel with ID"
+curl -w "\nstatus=%{http_code}\n" -H "Content-Type: application/json" -X PATCH -d '{"position":11}' http://localhost:3000/camels/$ID
