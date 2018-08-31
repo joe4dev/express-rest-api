@@ -33,6 +33,18 @@ app.get('/camels/:id', function(req, res) {
     res.json(camels[req.params.id]);
 });
 
+// Update the camel with the given ID
+app.put('/camels/:id', function(req, res) {
+    var id = req.params.id;
+    var updated_camel = {
+        "_id": id,
+        "color": req.body.color,
+        "position": req.body.position
+    }
+    camels[id] = updated_camel;
+    res.json(updated_camel);
+});
+
 app.listen(3000, function() {
     console.log('Example app listening on port 3000!');
 });
