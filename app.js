@@ -12,6 +12,17 @@ app.get('/', function(req, res) {
 // Camels storage array
 var camels = [];
 
+// Create a new camel
+app.post('/camels', function(req, res) {
+    var new_camel = {
+        "_id": camels.length,
+        "color": req.body.color,
+        "position": req.body.position
+    };
+    camels.push(new_camel);
+    res.status(201).json(new_camel);
+});
+
 app.listen(3000, function() {
     console.log('Example app listening on port 3000!');
 });
