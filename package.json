@@ -16,7 +16,8 @@
   "homepage": "https://github.com/joe4dev/express-rest-api",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "mongoose": "^5.2.12"
   },
   "devDependencies": {
     "newman": "^4.1.0"
