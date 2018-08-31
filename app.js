@@ -25,19 +25,20 @@ var camelSchema = new Schema({
 var Camel = mongoose.model('camels', camelSchema);
 
 // Create a new camel
-app.post('/camels', function(req, res) {
-    var new_camel = {
-        "_id": camels.length,
-        "color": req.body.color,
-        "position": req.body.position
-    };
-    camels.push(new_camel);
-    res.status(201).json(new_camel);
+app.post('/camels', function(req, res, next) {
+    var camel = new Camel(req.body);
+    camel.save(function(err) {
+        if (err) { return next(err); }
+        res.status(201).json(camel);
+    });
 });
 
 // Return a list of all camels
-app.get('/camels', function(req, res) {
-    res.json({"camels": camels});
+app.get('/camels', function(req, res, next) {
+    Camel.find(function(err, camels) {
+        if (err) { return next(err); }
+        res.json({"camels": camels});
+    });
 });
 
 // Return the camel with the given ID
