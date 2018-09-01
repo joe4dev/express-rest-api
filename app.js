@@ -34,8 +34,11 @@ app.post('/camels', function(req, res, next) {
 });
 
 // Return a list of all camels
-app.get('/camels', function(req, res) {
-    res.json({"data": camels});
+app.get('/camels', function(req, res, next) {
+    Camel.find(function(err, camels) {
+        if (err) { return next(err); }
+        res.json({"data": camels});
+    });
 });
 
 // Return the camel with the given ID
