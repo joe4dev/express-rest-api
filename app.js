@@ -69,16 +69,18 @@ app.put('/camels/:id', function(req, res, next) {
 });
 
 // Partially update the camel with the given ID
-app.patch('/camels/:id', function(req, res) {
+app.patch('/camels/:id', function(req, res, next) {
     var id = req.params.id;
-    var camel = camels[id];
-    var updated_camel = {
-        "_id": id,
-        "color": (req.body.color || camel.color),
-        "position": (req.body.position || camel.position)
-    };
-    camels[id] = updated_camel;
-    res.json(updated_camel);
+    Camel.findById(id, function(err, camel) {
+        if (err) { return next(err); }
+        if (camel == null) {
+            return res.status(404).json({"message": "Camel not found"});
+        }
+        camel.color = (req.body.color || camel.color);
+        camel.position = (req.body.position || camel.position);
+        camel.save();
+        res.json(camel);
+    });
 });
 
 // Delete the camel with the given ID
