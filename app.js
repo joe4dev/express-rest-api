@@ -42,8 +42,15 @@ app.get('/camels', function(req, res, next) {
 });
 
 // Return the camel with the given ID
-app.get('/camels/:id', function(req, res) {
-    res.json(camels[req.params.id]);
+app.get('/camels/:id', function(req, res, next) {
+    var id = req.params.id;
+    Camel.findById(req.params.id, function(err, camel) {
+        if (err) { return next(err); }
+        if (camel == null) {
+            return res.status(404).json({"message": "Camel not found"});
+        }
+        res.json(camel);
+    });
 });
 
 // Update the camel with the given ID
