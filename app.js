@@ -13,9 +13,6 @@ app.get('/', function(req, res) {
     res.send('Hello World!');
 });
 
-// Camels storage array
-var camels = [];
-
 // Mongoose schema
 var camelSchema = new Schema({
     color: { type: String },
@@ -84,11 +81,15 @@ app.patch('/camels/:id', function(req, res, next) {
 });
 
 // Delete the camel with the given ID
-app.delete('/camels/:id', function(req, res) {
+app.delete('/camels/:id', function(req, res, next) {
     var id = req.params.id;
-    var camel = camels[id];
-    delete camels[id];
-    res.json(camel);
+    Camel.findOneAndDelete({_id: id}, function(err, camel) {
+        if (err) { return next(err); }
+        if (camel == null) {
+            return res.status(404).json({"message": "Camel not found"});
+        }
+        res.json(camel);
+    });
 });
 
 app.listen(3000, function() {
