@@ -92,6 +92,20 @@ app.delete('/camels/:id', function(req, res, next) {
     });
 });
 
+// Error handler (must be registered last)
+app.use(function(err, req, res, next) {
+    console.error(err.stack);
+    var err_res = {
+        "message": err.message,
+        "error": {}
+    };
+    if (app.get('env') === 'development') {
+        err_res["error"] = err;
+    }
+    res.status(err.status || 500);
+    res.json(err_res);
+});
+
 app.listen(3000, function() {
     console.log('Example app listening on port 3000!');
 });
