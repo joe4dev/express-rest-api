@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var app = express();
 var Schema = mongoose.Schema;
 // Connect to MongoDB
+mongoose.set('useFindAndModify', false);
 mongoose.connect('mongodb://localhost:27017/animals', { useNewUrlParser: true });
 
 // Parse requests of content-type 'application/json'
@@ -68,14 +69,14 @@ app.put('/camels/:id', function(req, res, next) {
 // Partially update the camel with the given ID
 app.patch('/camels/:id', function(req, res, next) {
     var id = req.params.id;
-    Camel.findById(id, function(err, camel) {
+    var update = req.body;
+    // `new` determines whether to return the new (i.e., updated) version (default: false)
+    var options = {new: true};
+    Camel.findByIdAndUpdate(id, update, options, function(err, camel) {
         if (err) { return next(err); }
         if (camel == null) {
             return res.status(404).json({"message": "Camel not found"});
         }
-        camel.color = (req.body.color || camel.color);
-        camel.position = (req.body.position || camel.position);
-        camel.save();
         res.json(camel);
     });
 });
